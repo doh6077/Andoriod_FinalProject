@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,12 +18,23 @@ import com.example.firebase.StorageActivity
 import com.example.lab4_doheekim.ui.theme.Lab4_DoheeKimTheme
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
@@ -43,38 +55,133 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var storageActivity = StorageActivity()
-    Column {
-        Text(
-            text = "Hello Dohee!",
-            modifier = modifier
+    var authentication = Authentication()
+    Column(
+        modifier = Modifier.padding(48.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+        Image(
+            painter = painterResource(id = R.drawable.hi),
+            contentDescription = "hi image",
+            modifier = Modifier.size(200.dp)
         )
-        Button(onClick = {
-            Toast.makeText(context, "Uploading image...", Toast.LENGTH_SHORT).show()
-            storageActivity.uploadFile(context)
-        }
+
+        // First Button - Create
+        Button(
+            onClick = {
+                Toast.makeText(context, "Uploading image...", Toast.LENGTH_SHORT).show()
+                storageActivity.uploadFile(context)
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
         ) {
-            Text("Create")
+            Text(
+                "Create",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
-        Button(onClick = {
-            Toast.makeText(context, "Reading image...", Toast.LENGTH_SHORT).show()
-            storageActivity.downloadFile()
-        }
+
+        // Second Button - Read
+        Button(
+            onClick = {
+                Toast.makeText(context, "Reading image...", Toast.LENGTH_SHORT).show()
+                storageActivity.downloadFile()
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
         ) {
-            Text("Read")
+            Text(
+                "Read",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
-        Button(onClick = {
-            Toast.makeText(context, "Updating image...", Toast.LENGTH_SHORT).show()
-            storageActivity.updateFile(context)
-        }
+
+        // Third Button - Update
+        Button(
+            onClick = {
+                Toast.makeText(context, "Updating image...", Toast.LENGTH_SHORT).show()
+                storageActivity.updateFile(context)
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
         ) {
-            Text("Update")
+            Text(
+                "Update",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
-        Button(onClick = {
-            Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
-            storageActivity.deleteFile()
-        }
+
+        // Fourth Button - Delete
+        Button(
+            onClick = {
+                Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
+                storageActivity.deleteFile()
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
         ) {
-            Text("Delete")
+            Text(
+                "Delete",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Button(
+            onClick = {
+                Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
+                authentication.signIn(context,"doh6077@gmail.com", "1234")
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
+        ) {
+            Text(
+                "Sign in",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Button(
+            onClick = {
+                Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
+                authentication.signUp(context,"doh6077@gmail.com", "123456")
+            },
+            shape = RoundedCornerShape(size = 24.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+            modifier = Modifier
+                .size(250.dp, 70.dp)
+                .padding(8.dp)
+        ) {
+            Text(
+                "Sign up",
+                modifier = Modifier.padding(8.dp),
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
