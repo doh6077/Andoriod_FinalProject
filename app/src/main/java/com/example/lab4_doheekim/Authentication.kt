@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.example.lab4_doheekim.screen.HomeScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -39,13 +40,16 @@ class Authentication : ViewModel() {
 
     fun goToMainActivity(user: FirebaseUser?, context: Context) {
         if (user != null) {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, HomeScreen::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }
     }
 
-    fun logout() {
+    fun logout(context: Context) {
         auth.signOut()
+        val intent = Intent(context, SignInActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }

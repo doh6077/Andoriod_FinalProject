@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.firebase.common.ktx)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -78,4 +79,17 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation ("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore")
+
+    // database Setup
+    implementation ("com.google.firebase:firebase-database-ktx")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.2")
+    val nav_version = "2.7.5"
+
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    implementation ("com.google.accompanist:accompanist-pager:0.20.1")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:0.20.1")
+
 }
