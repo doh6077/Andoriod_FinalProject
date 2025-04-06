@@ -1,5 +1,6 @@
 package com.example.lab4_doheekim
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
@@ -51,5 +52,9 @@ class Authentication : ViewModel() {
         val intent = Intent(context, SignInActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
+        // Finish the current activity to prevent back navigation
+        if (context is Activity) {
+            context.finish()
+        }
     }
 }
