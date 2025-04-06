@@ -189,7 +189,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
-                authentication.logout()
+                authentication.logout(context)
             },
             shape = RoundedCornerShape(size = 24.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),

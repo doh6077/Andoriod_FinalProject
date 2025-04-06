@@ -102,25 +102,7 @@ fun SignUp(modifier: Modifier = Modifier) {
                 fontWeight = FontWeight.Bold
             )
         }
-        // Set up sign out button
-        Button(
-            onClick = {
-                Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
-                authentication.logout()
-            },
-            shape = RoundedCornerShape(size = 24.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
-            modifier = Modifier
-                .size(250.dp, 70.dp)
-                .padding(8.dp)
-        ) {
-            Text(
-                "Sign out",
-                modifier = Modifier.padding(8.dp),
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+
     }
 }
 
