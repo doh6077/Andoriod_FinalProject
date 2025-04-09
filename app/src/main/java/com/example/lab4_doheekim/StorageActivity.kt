@@ -11,6 +11,10 @@ import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.storageMetadata
 import java.io.ByteArrayOutputStream
 import android.content.Context
+import android.net.Uri
+import android.widget.Toast
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class StorageActivity: ViewModel() {
 
@@ -45,7 +49,21 @@ class StorageActivity: ViewModel() {
                 Log.e("Firebase", "Upload img.png failed", it)
             }
     }
+    fun imageUpload(uri: Uri) {
+        // storage 인스턴스 생성
+        val storage = Firebase.storage
+        // storage 참조
+        val storageRef = storage.getReference("image")
+        // storage에 저장할 파일명 선언
+        val fileName = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
+        val mountainsRef = storageRef.child("${fileName}.png")
 
+        val uploadTask = mountainsRef.putFile(uri)
+        uploadTask.addOnSuccessListener { taskSnapshot ->
+        }.addOnFailureListener {
+
+        }
+    }
 
 
     fun downloadFile(){
@@ -70,7 +88,7 @@ class StorageActivity: ViewModel() {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
         val data = baos.toByteArray()
 
-        val ref = storageRef.child("images/img.png")
+        val ref = storageRef.child("profile_images/img.png")
 
         ref.putBytes(data)
             .addOnSuccessListener {

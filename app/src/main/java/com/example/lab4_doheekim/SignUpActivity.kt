@@ -8,8 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -65,6 +67,14 @@ fun SignUp(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            "Sign up",
+            modifier = Modifier.padding(8.dp),
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -82,7 +92,16 @@ fun SignUp(modifier: Modifier = Modifier) {
                 .padding(8.dp),
             visualTransformation = PasswordVisualTransformation()
         )
-
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Confirm Password") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            visualTransformation = PasswordVisualTransformation()
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         // Set up sing up button
         Button(
             onClick = {

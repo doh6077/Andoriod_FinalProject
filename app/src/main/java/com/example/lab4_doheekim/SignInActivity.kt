@@ -92,7 +92,7 @@ fun SignInPage(name: String, modifier: Modifier = Modifier) {
         // Set up sign in button
         Button(
             onClick = {
-                Toast.makeText(context, "Deleting image...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Signing In...", Toast.LENGTH_SHORT).show()
                 authentication.signIn(context,email, password)
             },
             shape = RoundedCornerShape(size = 24.dp),
